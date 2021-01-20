@@ -19,9 +19,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   DataSource ds;
 
-  @Autowired
-  PasswordEncoder passwordEncoder;
-
   public static void main(String[] args) {
     System.out.println(new BCryptPasswordEncoder().encode("admin"));
   }
