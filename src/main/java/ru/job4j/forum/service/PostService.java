@@ -15,7 +15,7 @@ public class PostService {
   }
 
   public Iterable<Post> getAll() {
-    return posts.findAll();
+    return posts.findByOrderByIdAsc();
   }
 
   public Post findById(Integer id) {

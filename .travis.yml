@@ -12,8 +12,8 @@ services:
 
 before_install:
   - psql -c "CREATE DATABASE \"forum\";" -U postgres
-  - psql -U postgres -d forum -f "db/schema.sql"
-  - psql -U postgres -d forum -f "db/security.sql"
+  - psql -U postgres -d forum -f "src/main/resources/db/schema.sql"
+  - psql -U postgres -d forum -f "src/main/resources/db/security.sql"
 
 branches:
   only:
