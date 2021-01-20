@@ -4,6 +4,17 @@ sudo: false
 
 jdk: openjdk15
 
+addons:
+  postgresql: "10"
+
+services:
+  - postgresql
+
+before_install:
+  - psql -c "CREATE DATABASE \"forum\";" -U postgres
+  - psql -U postgres -d forum -f "db/schema.sql"
+  - psql -U postgres -d forum -f "db/security.sql"
+
 branches:
   only:
     - master
@@ -15,3 +26,6 @@ notifications:
       - bujhtitxrf@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
