@@ -27,3 +27,13 @@ notifications:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+install: true
+
+script: mvn clean package -DskipTests=true
+
+deploy:
+  provider: heroku
+  app: radiant-ocean-30267
+  api_key:
+    secure: EbY4oWh0jTbhnAbZ/cEoKBYICIaESR2m3h12pWgCUddPQXgWVTlelCudf7FP/zf2EpZeVFilSMS4F8+EaQmV/oERFIr9tUEMrB2hw0LhFxCYFYydi+AfqDYiBOF3gqydvLNpDZ6cE9428XbG9pHjzNJeD3gDyZDr1yu1+PCyYIeV2WWfHZ8F3FGeTtid3X0Kq1qEoRX97huS2SjyvTu4nJBFCbkedZjo1galVolBNEGTz6SIktyGQ+hhRmaJZ88A/RroxgNwY0x009U+NANIRZ2gFNJgbnPYAzrR4BqFEKCREbPSVWGSND0EejK0v6oogYLMxQTBionOz2ysVGG5Ftlp69T/6JVp6D0oUyE7EFbqjkE0jL5Clk98OVFPXRSReq9rIDHEyKNuvSC2gxQU3bTthT5vFMk27kTtVDNt6RgP6XAbled9dBSLN7mml1Gk4NpORBkVyr77j/NtkUJApk1cyDWupvN1VQvwbcbv+5HxMrWMVtm92xqNin6K2Lj/AoTFsF/nz0pNs94AbNrRsHfeub3Jed1HzK+81VvXyFqVaUd2Et+vvaBcCXMSSA3KKcInAaFj2nDe4GXdQRwEbaf1js5SsoZ0js6Rwtsf7RPnJpcrxsffqm/d44tbQdJ1CdZT0zpxRKswbNkiyQ5+2JElZSPUOJe8CNlC/tIAC4I=
