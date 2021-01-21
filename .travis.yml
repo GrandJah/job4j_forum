@@ -1,29 +1,28 @@
 language: java
-
 sudo: false
-
 jdk: openjdk15
-
 addons:
-  postgresql: "10"
-
+  postgresql: '10'
 services:
   - postgresql
-
 before_install:
   - psql -c "CREATE DATABASE \"forum\";" -U postgres
-
 branches:
   only:
     - master
     - development
-
 notifications:
   email:
     recipients:
       - bujhtitxrf@gmail.com
-    on_success: never # default: change
-    on_failure: always # default: always
-
+    on_success: never
+    on_failure: always
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+install: true
+script: mvn clean package -DskipTests=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: fPrFxHRBxCgJEWMFrV1r/ury1L9enJu+P4SRS+qyRCRb9hH+1MVElSmlUaIvLJutTI99dV+F5eAwfuHujogb85OZU/S3MpnLBCuDiyEP5F7wuWsmXlKp5G/QVRV1XRBryeLgb3hfYujThpdwVv5jPl6bc4Jl5LqZsnytJeBvmySAEuux6F3DSZDxtX34wnU7Wphkrw/J77iB3rkabDzJNyaZv0+DsOK7y+1Prcr8j/TbI+Wlvt6kEUVdUzSTI1gGzf6kDzmLfQMWAzv9VHQtve0LlQ0Qc+aCnKffjtwOKPMo+4viBcvwLqm9bLJbRPyvmH3JQGvoIBUrw67K0Q60wsnKyh5AuebLz/IZjJoieY3njhhL+QJd1s44GHBwvOeQZeGMFx2BgvLxxF32OP14NgqWvofh/mlSt+PRqcaftdiV2L3rs1AMEhkuybK4r+GdNVJoMKEBcYTURhjQQfOerTmJkQobQpuToyTgezBxei2qjJv9+bIBq/q7gaD7puUMCy5ffOWolkQANC2ZOmyBxcf1OFB4lOLs2G2yGkK+s0/9U/3GdiW3h72hYaK1vuvkqqi2fUFShd5CCv0djVdxpslHmZ1ya5yZbw9mxxV/g+furCKk9phreVHAnm/nJknSNDK/36a0fIHewsEY8Y+W3+9t4ftFXb7ALoP3BZMEEZk=
+  app: radiant-ocean-30267
